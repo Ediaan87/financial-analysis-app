@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function InputForm() {
   const [taxPercentage, setTaxPercentage] = useState('');
@@ -9,13 +10,13 @@ function InputForm() {
 
     // You can handle form submission here, such as sending data to the backend
     // For example: create a function to send data to the backend API
-    // axios.post('/api/submit', { taxPercentage, interestRate })
-    // .then(response => {
-    //   // Handle success
-    // })
-    // .catch(error => {
-    //   // Handle error
-    // });
+    axios.post('/api/submit', { taxPercentage, interestRate })
+      .then(response => {
+        // Handle success
+      })
+      .catch(error => {
+        // Handle error
+      });
   };
 
   return (
