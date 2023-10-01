@@ -5,6 +5,17 @@ function InputForm() {
   const [taxPercentage, setTaxPercentage] = useState('');
   const [interestRate, setInterestRate] = useState('');
 
+  const calculateRatios = (taxPercentage, interestRate) => {
+    // Perform your financial ratio calculations here
+    // This is just a placeholder. Replace with your actual calculation logic
+    return {
+      acidTestRatio: taxPercentage / interestRate,
+      quickTestRatio: interestRate / taxPercentage,
+      repaymentAbility: 'Good',
+      debtCapacity: 'High',
+    };
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -13,6 +24,8 @@ function InputForm() {
     axios.post('/api/submit', { taxPercentage, interestRate })
       .then(response => {
         // Handle success
+        const ratios = calculateRatios(taxPercentage, interestRate);
+        console.log(ratios); // Log the calculated ratios. Replace this with your actual logic for handling the ratios
       })
       .catch(error => {
         // Handle error
